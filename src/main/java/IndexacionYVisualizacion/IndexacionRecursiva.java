@@ -1,8 +1,10 @@
 package IndexacionYVisualizacion;
 
 import java.io.File;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class IndexacionRecursiva {
     private Map<String, String> indice;
@@ -28,5 +30,11 @@ public class IndexacionRecursiva {
 
     public String obtenerRuta(String nombreArchivo) {
         return indice.get(nombreArchivo);
+    }
+
+    public void listarArchivosOrdenados() {
+        indice.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEach(entry -> System.out.println("Nombre del archivo: " + entry.getKey() + ", Ruta completa: " + entry.getValue()));
     }
 }

@@ -1,6 +1,6 @@
 package AnalisisYOrganizacion;
 
-public class Venta {
+public class Venta implements Comparable<Venta> {
     private String nombre;
     private double monto;
     private String categoria;
@@ -21,5 +21,10 @@ public class Venta {
 
     public String getCategoria() {
         return categoria;
+    }
+
+    @Override
+    public int compareTo(Venta o) {
+        return Double.compare(this.monto, o.monto);
     }
 }

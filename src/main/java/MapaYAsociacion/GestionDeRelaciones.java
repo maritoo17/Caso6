@@ -1,5 +1,6 @@
 package MapaYAsociacion;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,5 +49,14 @@ public class GestionDeRelaciones {
             }
         }
         return numeros;
+    }
+
+    public void mostrarEnVentana() {
+        JFrame frame = new JFrame("GestionDeRelaciones");
+        JLabel label = new JLabel("Numeros y Letras: " + this.numerosYLetras.toString() + "\nNumeros y Textos: " + this.numerosYTextos.toString());
+        frame.getContentPane().add(label);
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }

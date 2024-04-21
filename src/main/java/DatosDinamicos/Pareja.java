@@ -1,5 +1,7 @@
 package DatosDinamicos;
 
+import javax.swing.*;
+
 public class Pareja <T, U> {
     private T primerElemento;
     private U segundoElemento;
@@ -28,5 +30,14 @@ public class Pareja <T, U> {
     @Override
     public String toString() {
         return "(" + primerElemento + ", " + segundoElemento + ")";
+    }
+
+    public void mostrarEnVentana() {
+        JFrame frame = new JFrame("Pareja");
+        JLabel label = new JLabel(this.toString());
+        frame.getContentPane().add(label);
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }

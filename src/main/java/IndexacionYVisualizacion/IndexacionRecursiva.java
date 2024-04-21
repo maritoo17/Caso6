@@ -1,5 +1,6 @@
 package IndexacionYVisualizacion;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -36,5 +37,17 @@ public class IndexacionRecursiva {
         indice.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .forEach(entry -> System.out.println("Nombre del archivo: " + entry.getKey() + ", Ruta completa: " + entry.getValue()));
+    }
+
+    public void mostrarEnVentana() {
+        JFrame frame = new JFrame("IndexacionRecursiva");
+        JTextArea textArea = new JTextArea();
+        indice.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEach(entry -> textArea.append("Nombre del archivo: " + entry.getKey() + ", Ruta completa: " + entry.getValue() + "\n"));
+        frame.getContentPane().add(new JScrollPane(textArea));
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }

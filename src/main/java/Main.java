@@ -25,17 +25,17 @@ public class Main {
             switch (opcion) {
                 case 1:
                     Pareja<Integer, String> pareja = new Pareja<>(1, "Uno");
-                    System.out.println(pareja.toString());
+                    pareja.mostrarEnVentana();
                     break;
                 case 2:
                     ParesEnteros paresEnteros = new ParesEnteros();
                     paresEnteros.agregarPareja(1, 2);
-                    System.out.println(paresEnteros.obtenerLista());
+                    paresEnteros.mostrarEnVentana();
                     break;
                 case 3:
                     DatosReales datosReales = new DatosReales();
                     datosReales.agregarDato(1.23);
-                    System.out.println(datosReales.obtenerLista());
+                    datosReales.mostrarEnVentana();
                     break;
                 case 4:
                     InterfazUsuario interfazUsuario = new InterfazUsuario();
@@ -45,17 +45,17 @@ public class Main {
                     OrdenacionYBusqueda ordenacionYBusqueda = new OrdenacionYBusqueda();
                     ordenacionYBusqueda.agregarVenta(new Venta("Carlos", 200.0, "Electrónicos"));
                     ordenacionYBusqueda.ordenarVentasPorMonto();
-                    System.out.println(ordenacionYBusqueda.obtenerVentas());
+                    ordenacionYBusqueda.mostrarEnVentana();
                     break;
                 case 6:
                     GestionDeRelaciones gestionDeRelaciones = new GestionDeRelaciones();
                     gestionDeRelaciones.agregarRelacionNumerosYLetras(1, "Uno");
-                    System.out.println(gestionDeRelaciones.obtenerLetraDeNumero(1));
+                    gestionDeRelaciones.mostrarEnVentana();
                     break;
                 case 7:
                     IndexacionRecursiva indexacionRecursiva = new IndexacionRecursiva();
                     indexacionRecursiva.indexarDirectorio("/path/to/directory");
-                    indexacionRecursiva.listarArchivosOrdenados();
+                    indexacionRecursiva.mostrarEnVentana();
                     break;
                 case 0:
                     System.out.println("Saliendo...");

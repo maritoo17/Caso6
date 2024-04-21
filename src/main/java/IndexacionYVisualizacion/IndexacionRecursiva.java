@@ -1,6 +1,9 @@
 package IndexacionYVisualizacion;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -41,11 +44,22 @@ public class IndexacionRecursiva {
 
     public void mostrarEnVentana() {
         JFrame frame = new JFrame("IndexacionRecursiva");
+        frame.setLayout(new BorderLayout());
         JTextArea textArea = new JTextArea();
         indice.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .forEach(entry -> textArea.append("Nombre del archivo: " + entry.getKey() + ", Ruta completa: " + entry.getValue() + "\n"));
-        frame.getContentPane().add(new JScrollPane(textArea));
+        frame.getContentPane().add(new JScrollPane(textArea), BorderLayout.CENTER);
+
+        JButton backButton = new JButton("Atrás");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+        frame.getContentPane().add(backButton, BorderLayout.SOUTH);
+
         frame.setSize(300, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

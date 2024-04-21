@@ -1,6 +1,9 @@
 package MapaYAsociacion;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,8 +56,19 @@ public class GestionDeRelaciones {
 
     public void mostrarEnVentana() {
         JFrame frame = new JFrame("GestionDeRelaciones");
+        frame.setLayout(new BorderLayout());
         JLabel label = new JLabel("Numeros y Letras: " + this.numerosYLetras.toString() + "\nNumeros y Textos: " + this.numerosYTextos.toString());
-        frame.getContentPane().add(label);
+        frame.getContentPane().add(label, BorderLayout.CENTER);
+
+        JButton backButton = new JButton("Atrás");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+        frame.getContentPane().add(backButton, BorderLayout.SOUTH);
+
         frame.setSize(300, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

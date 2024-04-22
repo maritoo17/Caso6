@@ -30,7 +30,11 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ParesEnteros paresEnteros = new ParesEnteros();
-                paresEnteros.agregarPareja(1, 2);
+                String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento del par:");
+                String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento del par:");
+                int primerElemento = Integer.parseInt(primerElementoStr);
+                int segundoElemento = Integer.parseInt(segundoElementoStr);
+                paresEnteros.agregarPareja(primerElemento, segundoElemento);
                 paresEnteros.mostrarEnVentana();
             }
         });

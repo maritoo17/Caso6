@@ -16,7 +16,11 @@ public class InterfazPrincipal extends JFrame {
         boton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pareja<Integer, String> pareja = new Pareja<>(1, "Uno");
+                String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento (número):");
+                String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento (número con letras):");
+                int primerElemento = Integer.parseInt(primerElementoStr);
+                String segundoElemento = segundoElementoStr;
+                Pareja<Integer, String> pareja = new Pareja<>(primerElemento, segundoElemento);
                 pareja.mostrarEnVentana();
             }
         });

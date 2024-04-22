@@ -93,7 +93,8 @@ public class InterfazPrincipal extends JFrame {
         add(boton6);
         add(boton7);
 
-        setSize(300, 200);
+        setSize(800, 600);
+        getContentPane().setBackground(new Color(200,200,200));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

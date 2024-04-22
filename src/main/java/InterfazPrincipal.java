@@ -7,21 +7,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InterfazPrincipal extends JFrame {
+    private List<Object> lista;
+
     public InterfazPrincipal() {
         setLayout(new FlowLayout());
+        lista = new ArrayList<>();
 
         JButton boton1 = new JButton("Ejecutar Pareja");
         boton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento (número):");
-                String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento (número con letras):");
-                int primerElemento = Integer.parseInt(primerElementoStr);
-                String segundoElemento = segundoElementoStr;
-                Pareja<Integer, String> pareja = new Pareja<>(primerElemento, segundoElemento);
-                pareja.mostrarEnVentana();
+                String continuar;
+                do {
+                    String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento (número):");
+                    String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento (número con letras):");
+                    int primerElemento = Integer.parseInt(primerElementoStr);
+                    String segundoElemento = segundoElementoStr;
+                    Pareja<Integer, String> pareja = new Pareja<>(primerElemento, segundoElemento);
+                    pareja.mostrarEnVentana();
+                    continuar = JOptionPane.showInputDialog("¿Desea agregar otra pareja? (s/n):");
+                } while (continuar.equalsIgnoreCase("s"));
             }
         });
 
@@ -30,11 +39,15 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ParesEnteros paresEnteros = new ParesEnteros();
-                String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento del par:");
-                String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento del par:");
-                int primerElemento = Integer.parseInt(primerElementoStr);
-                int segundoElemento = Integer.parseInt(segundoElementoStr);
-                paresEnteros.agregarPareja(primerElemento, segundoElemento);
+                String continuar;
+                do {
+                    String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento del par:");
+                    String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento del par:");
+                    int primerElemento = Integer.parseInt(primerElementoStr);
+                    int segundoElemento = Integer.parseInt(segundoElementoStr);
+                    paresEnteros.agregarPareja(primerElemento, segundoElemento);
+                    continuar = JOptionPane.showInputDialog("¿Desea agregar otro par de enteros? (s/n):");
+                } while (continuar.equalsIgnoreCase("s"));
                 paresEnteros.mostrarEnVentana();
             }
         });
@@ -44,9 +57,13 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DatosReales datosReales = new DatosReales();
-                String datoStr = JOptionPane.showInputDialog("Ingrese el dato real a agregar:");
-                double dato = Double.parseDouble(datoStr);
-                datosReales.agregarDato(dato);
+                String continuar;
+                do {
+                    String datoStr = JOptionPane.showInputDialog("Ingrese el dato real a agregar:");
+                    double dato = Double.parseDouble(datoStr);
+                    datosReales.agregarDato(dato);
+                    continuar = JOptionPane.showInputDialog("¿Desea agregar otro dato real? (s/n):");
+                } while (continuar.equalsIgnoreCase("s"));
                 datosReales.mostrarEnVentana();
             }
         });
@@ -102,6 +119,10 @@ public class InterfazPrincipal extends JFrame {
         setSize(800, 600);
         getContentPane().setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void agregarALista (String elemento) {
+        lista.add(elemento);
     }
 
     public static void main(String[] args) {

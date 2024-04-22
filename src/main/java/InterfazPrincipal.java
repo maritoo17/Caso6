@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InterfazPrincipal extends JFrame {
-    private List<Object> lista;
+    private List<Pareja <Integer, String>> listaParejas;
 
     public InterfazPrincipal() {
         setLayout(new FlowLayout());
-        lista = new ArrayList<>();
+        listaParejas = new ArrayList<>();
 
         JButton boton1 = new JButton("Ejecutar Pareja");
         boton1.addActionListener(new ActionListener() {
@@ -28,6 +28,7 @@ public class InterfazPrincipal extends JFrame {
                     int primerElemento = Integer.parseInt(primerElementoStr);
                     String segundoElemento = segundoElementoStr;
                     Pareja<Integer, String> pareja = new Pareja<>(primerElemento, segundoElemento);
+                    listaParejas.add(pareja);
                     pareja.mostrarEnVentana();
                     continuar = JOptionPane.showInputDialog("¿Desea agregar otra pareja? (s/n):");
                 } while (continuar.equalsIgnoreCase("s"));
@@ -119,10 +120,6 @@ public class InterfazPrincipal extends JFrame {
         setSize(800, 600);
         getContentPane().setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    public void agregarALista (String elemento) {
-        lista.add(elemento);
     }
 
     public static void main(String[] args) {

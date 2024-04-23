@@ -61,13 +61,8 @@ public class Pareja <T, U> extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Pareja().setVisible(true);
-            }
-        });
+    public void mostrarEnVentana() {
+        this.setVisible(true);
     }
 
     public T getPrimerElemento() {

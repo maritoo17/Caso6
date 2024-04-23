@@ -32,8 +32,14 @@ public class InterfazPrincipal extends JFrame {
                     pareja.mostrarEnVentana();
                     continuar = JOptionPane.showInputDialog("¿Desea agregar otra pareja? (s/n):");
                 } while (continuar.equalsIgnoreCase("s"));
+
+                List<Pareja> parejas = Pareja.getParejas();
+                for (Pareja pareja : parejas) {
+                    System.out.println(pareja);
+                }
             }
         });
+
 
         JButton boton2 = new JButton("Ejecutar ParesEnteros");
         boton2.addActionListener(new ActionListener() {

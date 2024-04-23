@@ -4,14 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pareja <T, U> {
     private T primerElemento;
     private U segundoElemento;
+    private static List<Pareja> parejas = new ArrayList<>();
 
     public Pareja(T primerElemento, U segundoElemento) {
         this.primerElemento = primerElemento;
         this.segundoElemento = segundoElemento;
+        parejas.add(this);
     }
 
     public T getPrimerElemento() {
@@ -53,5 +57,9 @@ public class Pareja <T, U> {
         frame.setSize(300, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    public static List<Pareja> getParejas() {
+        return parejas;
     }
 }

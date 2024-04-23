@@ -83,11 +83,22 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 OrdenacionYBusqueda ordenacionYBusqueda = new OrdenacionYBusqueda();
-                ordenacionYBusqueda.agregarVenta(new Venta("Carlos", 200.0, "Electrónicos"));
+                ordenacionYBusqueda.agregarVenta(new Venta());
                 ordenacionYBusqueda.ordenarVentasPorMonto();
                 ordenacionYBusqueda.mostrarEnVentana();
             }
         });
+
+        JButton botonVenta = new JButton("Ejecutar Venta");
+        botonVenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Venta venta = new Venta();
+                venta.setVisible(true);
+            }
+        });
+
+        add(botonVenta);
 
         JButton boton6 = new JButton("Ejecutar GestionDeRelaciones");
         boton6.addActionListener(new ActionListener() {

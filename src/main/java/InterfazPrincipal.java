@@ -7,8 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class InterfazPrincipal extends JFrame {
     public InterfazPrincipal() {
@@ -28,16 +26,7 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ParesEnteros paresEnteros = new ParesEnteros();
-                String continuar;
-                do {
-                    String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento del par:");
-                    String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento del par:");
-                    int primerElemento = Integer.parseInt(primerElementoStr);
-                    int segundoElemento = Integer.parseInt(segundoElementoStr);
-                    paresEnteros.agregarPareja(primerElemento, segundoElemento);
-                    continuar = JOptionPane.showInputDialog("¿Desea agregar otro par de enteros? (s/n):");
-                } while (continuar.equalsIgnoreCase("s"));
-                paresEnteros.mostrarEnVentana();
+                paresEnteros.setVisible(true);
             }
         });
 

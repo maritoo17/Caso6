@@ -86,8 +86,7 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 IndexacionRecursiva indexacionRecursiva = new IndexacionRecursiva();
-                indexacionRecursiva.indexarDirectorio("/path/to/directory");
-                indexacionRecursiva.listarArchivosOrdenados();
+                indexacionRecursiva.setVisible(true);
             }
         });
 

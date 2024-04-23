@@ -9,22 +9,79 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OrdenacionYBusqueda {
+public class OrdenacionYBusqueda extends JFrame {
     private List<Venta> ventas;
+    private JTextField nombreField;
+    private JTextField cantidadField;
+    private JTextField categoriaField;
+    private JTextArea textArea;
 
     public OrdenacionYBusqueda() {
         this.ventas = new ArrayList<>();
+        createUI();
     }
 
-    public void agregarVenta(Venta venta) {
-        ventas.add(venta);
+    private void createUI() {
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(500, 400);
+        setLayout(new FlowLayout());
+
+        nombreField = new JTextField(10);
+        cantidadField = new JTextField(10);
+        categoriaField = new JTextField(10);
+        textArea = new JTextArea(10, 30);
+        JButton addButton = new JButton("Agregar Venta");
+        JButton sortMontoButton = new JButton("Ordenar por Monto");
+        JButton sortCategoriaButton = new JButton("Ordenar por Categoría");
+
+        add(new JLabel("Nombre:"));
+        add(nombreField);
+        add(new JLabel("Cantidad:"));
+        add(cantidadField);
+        add(new JLabel("Categoría:"));
+        add(categoriaField);
+        add(addButton);
+        add(sortMontoButton);
+        add(sortCategoriaButton);
+        add(new JScrollPane(textArea));
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = nombreField.getText();
+                double monto = Double.parseDouble(cantidadField.getText());
+                String categoria = categoriaField.getText();
+                Venta venta = new Venta(nombre, monto, categoria);
+                ventas.add(venta);
+                updateTextArea();
+            }
+        });
+
+        sortMontoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ordenarVentasPorCantidad();
+                updateTextArea();
+            }
+        });
+
+        sortCategoriaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ordenarVentasPorCategoria();
+                updateTextArea();
+            }
+        });
     }
 
-    public List<Venta> obtenerVentas() {
-        return ventas;
+    private void updateTextArea() {
+        textArea.setText("");
+        for (Venta venta : ventas) {
+            textArea.append("Nombre: " + venta.getNombre() + ", Cantidad: " + venta.getCantidad() + ", Categoría: " + venta.getCategoria() + "\n");
+        }
     }
 
-    public void ordenarVentasPorMonto() {
+    public void ordenarVentasPorCantidad() {
         ventas.sort(Comparator.comparing(Venta::getCantidad));
     }
 
@@ -32,38 +89,7 @@ public class OrdenacionYBusqueda {
         ventas.sort(Comparator.comparing(Venta::getCategoria));
     }
 
-    public List<Venta> filtrarVentasPorMonto(double monto) {
-        return ventas.stream()
-                .filter(venta -> venta.getCantidad() >= monto)
-                .collect(Collectors.toList());
-    }
-
-    public List<Venta> filtrarVentasPorCategoria(String categoria) {
-        return ventas.stream()
-                .filter(venta -> venta.getCategoria().equals(categoria))
-                .collect(Collectors.toList());
-    }
-
     public void mostrarEnVentana() {
-        JFrame frame = new JFrame("OrdenacionYBusqueda");
-        frame.setLayout(new BorderLayout());
-        JTextArea textArea = new JTextArea();
-        for (Venta venta : ventas) {
-            textArea.append("Nombre: " + venta.getNombre() + ", Cantidad: " + venta.getCantidad() + ", Categoría: " + venta.getCategoria() + "\n");
-        }
-        frame.getContentPane().add(new JScrollPane(textArea), BorderLayout.CENTER);
-
-        JButton backButton = new JButton("Atrás");
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-            }
-        });
-        frame.getContentPane().add(backButton, BorderLayout.SOUTH);
-
-        frame.setSize(300, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        this.setVisible(true);
     }
 }

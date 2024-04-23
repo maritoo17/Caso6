@@ -11,35 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InterfazPrincipal extends JFrame {
-    private List<Pareja <Integer, String>> listaParejas;
-
     public InterfazPrincipal() {
         setLayout(new FlowLayout());
-        listaParejas = new ArrayList<>();
 
         JButton boton1 = new JButton("Ejecutar Pareja");
         boton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String continuar;
-                do {
-                    String primerElementoStr = JOptionPane.showInputDialog("Ingrese el primer elemento (número):");
-                    String segundoElementoStr = JOptionPane.showInputDialog("Ingrese el segundo elemento (número con letras):");
-                    int primerElemento = Integer.parseInt(primerElementoStr);
-                    String segundoElemento = segundoElementoStr;
-                    Pareja<Integer, String> pareja = new Pareja<>(primerElemento, segundoElemento);
-                    listaParejas.add(pareja);
-                    pareja.mostrarEnVentana();
-                    continuar = JOptionPane.showInputDialog("¿Desea agregar otra pareja? (s/n):");
-                } while (continuar.equalsIgnoreCase("s"));
-
-                List<Pareja> parejas = Pareja.getParejas();
-                for (Pareja pareja : parejas) {
-                    System.out.println(pareja);
-                }
+                Pareja pareja = new Pareja();
+                pareja.setVisible(true);
             }
         });
-
 
         JButton boton2 = new JButton("Ejecutar ParesEnteros");
         boton2.addActionListener(new ActionListener() {

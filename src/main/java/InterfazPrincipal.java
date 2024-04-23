@@ -35,14 +35,7 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DatosReales datosReales = new DatosReales();
-                String continuar;
-                do {
-                    String datoStr = JOptionPane.showInputDialog("Ingrese el dato real a agregar:");
-                    double dato = Double.parseDouble(datoStr);
-                    datosReales.agregarDato(dato);
-                    continuar = JOptionPane.showInputDialog("¿Desea agregar otro dato real? (s/n):");
-                } while (continuar.equalsIgnoreCase("s"));
-                datosReales.mostrarEnVentana();
+                datosReales.setVisible(true);
             }
         });
 

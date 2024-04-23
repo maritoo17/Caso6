@@ -31,7 +31,8 @@ public class OrdenacionYBusqueda extends JFrame {
         categoriaField = new JTextField(10);
         textArea = new JTextArea(10, 30);
         JButton addButton = new JButton("Agregar Venta");
-        JButton sortMontoButton = new JButton("Ordenar por Monto");
+        JButton sortNombreButton = new JButton("Ordenar por Nombre");
+        JButton sortCantidadButton = new JButton("Ordenar por Cantidad");
         JButton sortCategoriaButton = new JButton("Ordenar por Categoría");
 
         add(new JLabel("Nombre:"));
@@ -41,7 +42,8 @@ public class OrdenacionYBusqueda extends JFrame {
         add(new JLabel("Categoría:"));
         add(categoriaField);
         add(addButton);
-        add(sortMontoButton);
+        add(sortNombreButton);
+        add(sortCantidadButton);
         add(sortCategoriaButton);
         add(new JScrollPane(textArea));
 
@@ -49,15 +51,23 @@ public class OrdenacionYBusqueda extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nombre = nombreField.getText();
-                double monto = Double.parseDouble(cantidadField.getText());
+                double cantidad = Double.parseDouble(cantidadField.getText());
                 String categoria = categoriaField.getText();
-                Venta venta = new Venta(nombre, monto, categoria);
+                Venta venta = new Venta(nombre, cantidad, categoria);
                 ventas.add(venta);
                 updateTextArea();
             }
         });
 
-        sortMontoButton.addActionListener(new ActionListener() {
+        sortNombreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ordenarVentasPorNombre();
+                updateTextArea();
+            }
+        });
+
+        sortCantidadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ordenarVentasPorCantidad();
@@ -79,6 +89,10 @@ public class OrdenacionYBusqueda extends JFrame {
         for (Venta venta : ventas) {
             textArea.append("Nombre: " + venta.getNombre() + ", Cantidad: " + venta.getCantidad() + ", Categoría: " + venta.getCategoria() + "\n");
         }
+    }
+
+    public void ordenarVentasPorNombre() {
+        ventas.sort(Comparator.comparing(Venta::getNombre));
     }
 
     public void ordenarVentasPorCantidad() {

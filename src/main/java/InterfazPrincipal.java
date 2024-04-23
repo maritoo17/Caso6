@@ -53,9 +53,6 @@ public class InterfazPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 OrdenacionYBusqueda ordenacionYBusqueda = new OrdenacionYBusqueda();
-                ordenacionYBusqueda.agregarVenta(new Venta("Venta 1", 100.0, "Categoria 1"));
-                ordenacionYBusqueda.agregarVenta(new Venta("Venta 2", 200.0, "Categoria 2"));
-                ordenacionYBusqueda.ordenarVentasPorMonto();
                 ordenacionYBusqueda.mostrarEnVentana();
             }
         });

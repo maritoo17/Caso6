@@ -42,6 +42,11 @@ public class GestionDeRelaciones extends JFrame {
         });
     }
 
+    public void agregarRelacionNumerosYLetras(int numero, String letra) {
+        numerosYLetras.put(numero, letra);
+        textArea.append("Número: " + numero + ", Letra: " + letra + "\n");
+    }
+
     public void agregarRelacionNumerosYTextos(int numero, String texto) {
         numerosYTextos.put(numero, texto);
         textArea.append("Número: " + numero + ", Texto: " + texto + "\n");

@@ -2,28 +2,37 @@ package MapaYAsociacion;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class GestionDeRelaciones {
+public class GestionDeRelaciones extends JFrame {
     private Map<Integer, String> numerosYLetras;
     private Map<Integer, String> numerosYTextos;
+    private JTextArea textArea;
 
     public GestionDeRelaciones() {
         numerosYLetras = new HashMap<>();
         numerosYTextos = new HashMap<>();
+        createUI();
+    }
+
+    private void createUI() {
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(500, 400);
+        setLayout(new FlowLayout());
+
+        textArea = new JTextArea(10, 30);
+        add(new JScrollPane(textArea));
     }
 
     public void agregarRelacionNumerosYLetras(int numero, String letra) {
         numerosYLetras.put(numero, letra);
+        textArea.append("Número: " + numero + ", Letra: " + letra + "\n");
     }
 
     public void agregarRelacionNumerosYTextos(int numero, String texto) {
         numerosYTextos.put(numero, texto);
+        textArea.append("Número: " + numero + ", Texto: " + texto + "\n");
     }
 
     public String obtenerLetraDeNumero(int numero) {
@@ -34,43 +43,7 @@ public class GestionDeRelaciones {
         return numerosYTextos.get(numero);
     }
 
-    public List<Integer> obtenerNumerosPorLetra(String letra) {
-        List<Integer> numeros = new ArrayList<>();
-        for (Map.Entry<Integer, String> entry : numerosYLetras.entrySet()) {
-            if (entry.getValue().equals(letra)) {
-                numeros.add(entry.getKey());
-            }
-        }
-        return numeros;
-    }
-
-    public List<Integer> obtenerNumerosPorTexto(String texto) {
-        List<Integer> numeros = new ArrayList<>();
-        for (Map.Entry<Integer, String> entry : numerosYTextos.entrySet()) {
-            if (entry.getValue().equals(texto)) {
-                numeros.add(entry.getKey());
-            }
-        }
-        return numeros;
-    }
-
     public void mostrarEnVentana() {
-        JFrame frame = new JFrame("GestionDeRelaciones");
-        frame.setLayout(new BorderLayout());
-        JLabel label = new JLabel("Numeros y Letras: " + this.numerosYLetras.toString() + "\nNumeros y Textos: " + this.numerosYTextos.toString());
-        frame.getContentPane().add(label, BorderLayout.CENTER);
-
-        JButton backButton = new JButton("Atrás");
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-            }
-        });
-        frame.getContentPane().add(backButton, BorderLayout.SOUTH);
-
-        frame.setSize(300, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        this.setVisible(true);
     }
 }

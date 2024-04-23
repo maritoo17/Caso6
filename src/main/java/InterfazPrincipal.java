@@ -68,15 +68,18 @@ public class InterfazPrincipal extends JFrame {
 
         add(botonVenta);
 
-        JButton boton6 = new JButton("Ejecutar GestionDeRelaciones");
-        boton6.addActionListener(new ActionListener() {
+        JButton botonGestionRelaciones = new JButton("Ejecutar GestionDeRelaciones");
+        botonGestionRelaciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GestionDeRelaciones gestionDeRelaciones = new GestionDeRelaciones();
                 gestionDeRelaciones.agregarRelacionNumerosYLetras(1, "Uno");
+                gestionDeRelaciones.agregarRelacionNumerosYTextos(2, "Dos");
                 gestionDeRelaciones.mostrarEnVentana();
             }
         });
+
+        add(botonGestionRelaciones);
 
         JButton boton7 = new JButton("Ejecutar IndexacionRecursiva");
         boton7.addActionListener(new ActionListener() {
@@ -93,7 +96,6 @@ public class InterfazPrincipal extends JFrame {
         add(boton3);
         add(boton4);
         add(boton5);
-        add(boton6);
         add(boton7);
 
         setSize(800, 600);

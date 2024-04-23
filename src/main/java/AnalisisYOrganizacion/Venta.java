@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Venta extends JFrame {
     private String nombre;
-    private double monto;
+    private double cantidad;
     private String categoria;
     private JTextField nombreField;
     private JTextField montoField;
@@ -22,9 +22,9 @@ public class Venta extends JFrame {
         createUI();
     }
 
-    public Venta(String nombre, double monto, String categoria) {
+    public Venta(String nombre, double cantidad, String categoria) {
         this.nombre = nombre;
-        this.monto = monto;
+        this.cantidad = cantidad;
         this.categoria = categoria;
     }
 
@@ -41,7 +41,7 @@ public class Venta extends JFrame {
 
         add(new JLabel("Nombre:"));
         add(nombreField);
-        add(new JLabel("Monto:"));
+        add(new JLabel("Cantidad:"));
         add(montoField);
         add(new JLabel("Categoría:"));
         add(categoriaField);
@@ -66,7 +66,7 @@ public class Venta extends JFrame {
     }
 
     public double getMonto() {
-        return monto;
+        return cantidad;
     }
 
     public String getCategoria() {

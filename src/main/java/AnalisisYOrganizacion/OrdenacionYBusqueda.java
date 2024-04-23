@@ -47,8 +47,11 @@ public class OrdenacionYBusqueda {
     public void mostrarEnVentana() {
         JFrame frame = new JFrame("OrdenacionYBusqueda");
         frame.setLayout(new BorderLayout());
-        JLabel label = new JLabel(this.ventas.toString());
-        frame.getContentPane().add(label, BorderLayout.CENTER);
+        JTextArea textArea = new JTextArea();
+        for (Venta venta : ventas) {
+            textArea.append("Nombre: " + venta.getNombre() + ", Cantidad: " + venta.getCantidad() + ", Categoría: " + venta.getCategoria() + "\n");
+        }
+        frame.getContentPane().add(new JScrollPane(textArea), BorderLayout.CENTER);
 
         JButton backButton = new JButton("Atrás");
         backButton.addActionListener(new ActionListener() {

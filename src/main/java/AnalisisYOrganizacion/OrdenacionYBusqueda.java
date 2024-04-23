@@ -25,7 +25,7 @@ public class OrdenacionYBusqueda {
     }
 
     public void ordenarVentasPorMonto() {
-        ventas.sort(Comparator.comparing(Venta::getMonto));
+        ventas.sort(Comparator.comparing(Venta::getCantidad));
     }
 
     public void ordenarVentasPorCategoria() {
@@ -34,7 +34,7 @@ public class OrdenacionYBusqueda {
 
     public List<Venta> filtrarVentasPorMonto(double monto) {
         return ventas.stream()
-                .filter(venta -> venta.getMonto() >= monto)
+                .filter(venta -> venta.getCantidad() >= monto)
                 .collect(Collectors.toList());
     }
 

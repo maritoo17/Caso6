@@ -65,7 +65,7 @@ public class Venta extends JFrame {
         return nombre;
     }
 
-    public double getMonto() {
+    public double getCantidad() {
         return cantidad;
     }
 
@@ -76,7 +76,7 @@ public class Venta extends JFrame {
     private void updateTextArea() {
         textArea.setText("");
         for (Venta venta : ventas) {
-            textArea.append(venta.getNombre() + ", " + venta.getMonto() + ", " + venta.getCategoria() + "\n");
+            textArea.append(venta.getNombre() + ", " + venta.getCantidad() + ", " + venta.getCategoria() + "\n");
         }
     }
 }

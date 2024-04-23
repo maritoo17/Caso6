@@ -22,6 +22,12 @@ public class Venta extends JFrame {
         createUI();
     }
 
+    public Venta(String nombre, double monto, String categoria) {
+        this.nombre = nombre;
+        this.monto = monto;
+        this.categoria = categoria;
+    }
+
     private void createUI() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 400);
@@ -45,10 +51,10 @@ public class Venta extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nombre = nombreField.getText();
-                monto = Double.parseDouble(montoField.getText());
-                categoria = categoriaField.getText();
-                Venta venta = new Venta();
+                String nombre = nombreField.getText();
+                double monto = Double.parseDouble(montoField.getText());
+                String categoria = categoriaField.getText();
+                Venta venta = new Venta(nombre, monto, categoria);
                 ventas.add(venta);
                 updateTextArea();
             }

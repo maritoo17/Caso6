@@ -16,6 +16,12 @@ public class InterfazPrincipal extends JFrame {
     public InterfazPrincipal() {
         setLayout(new FlowLayout());
 
+        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ruta/a/UAX.png"));
+        JLabel labelFondo = new JLabel();
+        labelFondo.setIcon(imagenFondo);
+        add(labelFondo);
+        labelFondo.setBounds(0, 0, imagenFondo.getIconWidth(), imagenFondo.getIconHeight());
+
         JButton boton1 = new JButton("Ejecutar Pareja");
         boton1.addActionListener(new ActionListener() {
             @Override
@@ -96,11 +102,12 @@ public class InterfazPrincipal extends JFrame {
                     File selectedDirectory = fileChooser.getSelectedFile();
                     IndexacionRecursiva indexacionRecursiva = new IndexacionRecursiva();
                     indexacionRecursiva.indexar(selectedDirectory);
-                    System.out.println("La indexación ha finalizado");
                     Map<String, String> index = indexacionRecursiva.getIndex();
+                    StringBuilder archivosIndexados = new StringBuilder("La indexación ha finalizado\n");
                     for (Map.Entry<String, String> entry : index.entrySet()) {
-                        System.out.println("Archivo: " + entry.getKey() + ", Ruta: " + entry.getValue());
+                        archivosIndexados.append("Archivo: ").append(entry.getKey()).append(", Ruta: ").append(entry.getValue()).append("\n");
                     }
+                    JOptionPane.showMessageDialog(null, archivosIndexados.toString());
                 }
             }
         });

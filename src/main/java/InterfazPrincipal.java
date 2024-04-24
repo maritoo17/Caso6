@@ -11,16 +11,19 @@ import java.io.File;
 import java.util.Map;
 
 public class InterfazPrincipal extends JFrame {
-    private final OrdenadorYListado ordenadorYListado = new OrdenadorYListado();
 
     public InterfazPrincipal() {
-        setLayout(new FlowLayout());
+        setLayout(new FlowLayout(FlowLayout.CENTER, 100, 100));
 
-        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ruta/a/UAX.png"));
-        JLabel labelFondo = new JLabel();
-        labelFondo.setIcon(imagenFondo);
-        add(labelFondo);
-        labelFondo.setBounds(0, 0, imagenFondo.getIconWidth(), imagenFondo.getIconHeight());
+        add(Box.createVerticalStrut(100));
+
+        ImageIcon icono1 = new ImageIcon(getClass().getResource("/uax.png"));
+        if (icono1.getIconWidth() == -1) {
+            System.out.println("No se pudo cargar la imagen. Verifique la ruta y asegúrese que está en /resources.");
+        } else {
+            JLabel labelImagen = new JLabel(icono1);
+            add(labelImagen);
+        }
 
         JButton boton1 = new JButton("Ejecutar Pareja");
         boton1.addActionListener(new ActionListener() {
@@ -122,7 +125,8 @@ public class InterfazPrincipal extends JFrame {
 
         setSize(800, 600);
         getContentPane().setBackground(Color.WHITE);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
     public static void main(String[] args) {

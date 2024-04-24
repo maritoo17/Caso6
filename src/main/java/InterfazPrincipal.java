@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Map;
 
 public class InterfazPrincipal extends JFrame {
     private final OrdenadorYListado ordenadorYListado = new OrdenadorYListado();
@@ -96,6 +97,10 @@ public class InterfazPrincipal extends JFrame {
                     IndexacionRecursiva indexacionRecursiva = new IndexacionRecursiva();
                     indexacionRecursiva.indexar(selectedDirectory);
                     System.out.println("La indexación ha finalizado");
+                    Map<String, String> index = indexacionRecursiva.getIndex();
+                    for (Map.Entry<String, String> entry : index.entrySet()) {
+                        System.out.println("Archivo: " + entry.getKey() + ", Ruta: " + entry.getValue());
+                    }
                 }
             }
         });

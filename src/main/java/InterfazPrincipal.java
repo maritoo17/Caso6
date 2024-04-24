@@ -13,17 +13,12 @@ import java.util.Map;
 public class InterfazPrincipal extends JFrame {
 
     public InterfazPrincipal() {
-        setLayout(new FlowLayout(FlowLayout.CENTER, 100, 100));
+        setLayout(new BorderLayout());
 
-        add(Box.createVerticalStrut(100));
+        getContentPane().setBackground(Color.WHITE);
 
-        ImageIcon icono1 = new ImageIcon(getClass().getResource("/uax.png"));
-        if (icono1.getIconWidth() == -1) {
-            System.out.println("No se pudo cargar la imagen. Verifique la ruta y asegúrese que está en /resources.");
-        } else {
-            JLabel labelImagen = new JLabel(icono1);
-            add(labelImagen);
-        }
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER)); //
 
         JButton boton1 = new JButton("Ejecutar Pareja");
         boton1.addActionListener(new ActionListener() {
@@ -33,6 +28,7 @@ public class InterfazPrincipal extends JFrame {
                 pareja.setVisible(true);
             }
         });
+        buttonPanel.add(boton1);
 
         JButton boton2 = new JButton("Ejecutar ParesEnteros");
         boton2.addActionListener(new ActionListener() {
@@ -42,6 +38,7 @@ public class InterfazPrincipal extends JFrame {
                 paresEnteros.setVisible(true);
             }
         });
+        buttonPanel.add(boton2);
 
         JButton boton3 = new JButton("Ejecutar DatosReales");
         boton3.addActionListener(new ActionListener() {
@@ -51,6 +48,7 @@ public class InterfazPrincipal extends JFrame {
                 datosReales.setVisible(true);
             }
         });
+        buttonPanel.add(boton3);
 
         JButton boton4 = new JButton("Ejecutar InterfazUsuario");
         boton4.addActionListener(new ActionListener() {
@@ -60,6 +58,7 @@ public class InterfazPrincipal extends JFrame {
                 interfazUsuario.setVisible(true);
             }
         });
+        buttonPanel.add(boton4);
 
         JButton boton5 = new JButton("Ejecutar OrdenacionYBusqueda");
         boton5.addActionListener(new ActionListener() {
@@ -69,6 +68,7 @@ public class InterfazPrincipal extends JFrame {
                 ordenacionYBusqueda.mostrarEnVentana();
             }
         });
+        buttonPanel.add(boton5);
 
         JButton botonVenta = new JButton("Ejecutar Venta");
         botonVenta.addActionListener(new ActionListener() {
@@ -78,8 +78,7 @@ public class InterfazPrincipal extends JFrame {
                 venta.setVisible(true);
             }
         });
-
-        add(botonVenta);
+        buttonPanel.add(botonVenta);
 
         JButton botonGestionRelaciones = new JButton("Ejecutar GestionDeRelaciones");
         botonGestionRelaciones.addActionListener(new ActionListener() {
@@ -91,8 +90,7 @@ public class InterfazPrincipal extends JFrame {
                 gestionDeRelaciones.mostrarEnVentana();
             }
         });
-
-        add(botonGestionRelaciones);
+        buttonPanel.add(botonGestionRelaciones);
 
         JButton boton7 = new JButton("Ejecutar IndexacionRecursiva");
         boton7.addActionListener(new ActionListener() {
@@ -114,17 +112,20 @@ public class InterfazPrincipal extends JFrame {
                 }
             }
         });
-        add(boton7);
+        buttonPanel.add(boton7);
 
-        add(boton1);
-        add(boton2);
-        add(boton3);
-        add(boton4);
-        add(boton5);
-        add(boton7);
+        add(buttonPanel, BorderLayout.NORTH);
+
+        ImageIcon icono1 = new ImageIcon(getClass().getResource("/uax.png"));
+        if (icono1.getIconWidth() == -1) {
+            System.out.println("No se pudo cargar la imagen. Verifique la ruta y asegúrese que está en /resources.");
+        } else {
+            JLabel labelImagen = new JLabel(icono1);
+            add(labelImagen, BorderLayout.CENTER);
+        }
 
         setSize(800, 600);
-        getContentPane().setBackground(Color.WHITE);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }

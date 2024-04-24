@@ -7,8 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class InterfazPrincipal extends JFrame {
+    private final OrdenadorYListado ordenadorYListado = new OrdenadorYListado();
+
     public InterfazPrincipal() {
         setLayout(new FlowLayout());
 
@@ -85,10 +88,18 @@ public class InterfazPrincipal extends JFrame {
         boton7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                IndexacionRecursiva indexacionRecursiva = new IndexacionRecursiva();
-                indexacionRecursiva.setVisible(true);
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnValue = fileChooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File selectedDirectory = fileChooser.getSelectedFile();
+                    IndexacionRecursiva indexacionRecursiva = new IndexacionRecursiva();
+                    indexacionRecursiva.indexar(selectedDirectory);
+                    System.out.println("La indexación ha finalizado");
+                }
             }
         });
+        add(boton7);
 
         add(boton1);
         add(boton2);
